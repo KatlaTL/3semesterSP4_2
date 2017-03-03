@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Ex2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .mydiv {
+                width:  25px;
+                height: 25px;
+                background-color: lightblue;
+                margin: 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>Ex2</div>
+        <h2 id="h2">My Id's</h2>
+        <div id="outer">
+            <div class="mydiv" id="mydiv1"></div>
+            <div class="mydiv" id="mydiv2"></div>
+            <div class="mydiv" id="mydiv3"></div>
+            <div class="mydiv" id="mydiv4"></div>
+            <div class="mydiv" id="mydiv5"></div>
+            <div class="mydiv" id="mydiv6"></div>
+            <div class="mydiv" id="mydiv7"></div>
+            <div class="mydiv" id="mydiv8"></div>
+            <div class="mydiv" id="mydiv9"></div>
+            <div class="mydiv" id="mydiv10"></div>
+        </div>
+        <script>
+            //var divs = document.getElementsByClassName("mydiv");
+            var div = document.getElementById("outer");
+            //divs[0].addEventListener("click", colorFunction);
+            //divs[1].addEventListener("click", colorFunction);
+            div.addEventListener("click", colorFunction);
+            
+            function colorFunction(evt) {
+                var realDiv = evt.target;
+                console.log(this.id);
+                console.log(realDiv.id);
+                document.getElementById("h2").innerText = realDiv.id;
+            }
+        </script>
+    </body>
+</html>

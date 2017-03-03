@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Ex5</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div>Ex5</div>
+        <div id="container"></div>
+        <input type="text" id="nn"><button id="btn">Add</button>
+
+        <script>
+            var cars = [
+                {id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000},
+                {id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900},
+                {id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000},
+                {id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799},
+                {id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799}
+            ];
+
+            function createTable(arr) {
+                var td = arr.map(function (car) {
+                    return "<td>" + car.id + "</td>" + "<td>" + car.year + "</td>" + "<td>" + car.make + "</td>" + "<td>" + car.model + "</td>" + "<td>" + car.price + "</td>";
+                });
+                var tr = td.map(function (car) {
+                    return "<tr>" + car + "</tr>";
+                });
+                return "<table class='table'><tr><th>Id</th><th>Year</th><th>Make</th><th>Model</th><th>Price</th></tr>" + tr.join("") + "</table>";
+            }
+            document.getElementById("container").innerHTML = createTable(cars);
+
+            var btn = document.getElementById("btn");
+            btn.addEventListener("click", function () {
+                var carsFiltered = [];
+                cars.forEach(function (car) {
+                    if (car.price < document.getElementById("nn").value) {
+                        carsFiltered.push(car);
+                    }
+                });
+                document.getElementById("container").innerHTML = createTable(carsFiltered);
+            });
+
+        </script>
+    </body>
+</html>
